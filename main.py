@@ -90,7 +90,7 @@ def test_easy():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train, evaluate, or test the MNIST model.")
-    parser.add_argument("action", choices=["train", "evaluate", "test"], help="Action to perform")
+    parser.add_argument("action", choices=["train", "evaluate", "test", "easy"], help="Action to perform")
 
     args = parser.parse_args()
 
@@ -100,5 +100,5 @@ if __name__ == "__main__":
         evaluate()
     elif args.action == "test":
         test()
-    elif args.action == "easy_test":
+    elif args.action == "easy":
         test_easy()
