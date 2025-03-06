@@ -61,7 +61,7 @@ def test():
     print(f"Predicted Label: {predicted_label}")
 
 def test_easy():
-    """Test on a custom image."""
+    """Test on a custom easy image."""
     try:
         model.load_weights("mnist_model.h5")
         print("Loaded trained model.")
@@ -100,3 +100,5 @@ if __name__ == "__main__":
         evaluate()
     elif args.action == "test":
         test()
+    elif args.action == "easy_test":
+        test_easy()
