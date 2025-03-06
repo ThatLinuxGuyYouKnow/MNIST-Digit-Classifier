@@ -19,5 +19,9 @@ model = keras.Sequential([
 # Compile
 model.compile(optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"])
 
-# Train
-model.fit(x_train, y_train, epochs=5, batch_size=32, validation_data=(x_test, y_test))
+def train() :
+ model.fit(x_train, y_train, epochs=5, batch_size=32, validation_data=(x_test, y_test))
+
+def evaluate():
+ test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
+ print(f"Test accuracy: {test_acc * 100:.2f}%")
