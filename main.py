@@ -95,11 +95,38 @@ def test_easy():
 
     print(f"Predicted Label: {predicted_label}")
 
+def test_2():
+
+    """Test on a custom easy image."""
+    try:
+        model.load_weights("mnist_model.h5")
+        print("Loaded trained model.")
+    except:
+        print("No trained model found. Train the model first.")
+        return
+
+    img = Image.open("test_2.png").convert("L")   
+    img = img.resize((28, 28))  # Resize to match MNIST
+
+ 
+    img_array = np.array(img) / 255.0
+ 
+    img_array = 1 - img_array
+
+ 
+    img_array = img_array.reshape(1, 28, 28, 1)
+
+   
+    prediction = model.predict(img_array)
+    predicted_label = np.argmax(prediction)
+
+    print(f"Predicted Label: {predicted_label}")
+
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train, evaluate, or test the MNIST model.")
-    parser.add_argument("action", choices=["train", "evaluate", "test", "easy"], help="Action to perform")
+    parser.add_argument("action", choices=["train", "evaluate", "test", "easy","test_2"], help="Action to perform")
 
     args = parser.parse_args()
 
@@ -111,3 +138,6 @@ if __name__ == "__main__":
         test()
     elif args.action == "easy":
         test_easy()
+    elif args.action == "test_2":
+        test_2()
+
